@@ -12,7 +12,6 @@ fun! pymode#lint#auto() "{{{
     PymodePython auto()
     cclose
     call g:PymodeSigns.clear()
-    edit
     call pymode#wide_message("AutoPep8 done.")
 endfunction "}}}
 

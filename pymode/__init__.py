@@ -8,7 +8,7 @@ import vim  # noqa
 
 def auto():
     """ Fix PEP8 erorrs in current buffer. """
-    from .autopep8 import fix_file
+    from .autopep8 import fix_code
 
     class Options(object):
         aggressive = int(vim.eval('g:pymode_autoPEP8_aggressive'))
@@ -24,7 +24,15 @@ def auto():
         select = vim.eval('g:pymode_lint_select')
         verbose = 0
 
-    fix_file(vim.current.buffer.name, Options)
+    original = '\n'.join(vim.current.buffer[:])
+    fixed = fix_code(original, Options)
+    if not fixed:
+        return 1
+    if fixed == original:
+        return
+    vim.current.buffer[:] = fixed.split('\n')
+    if vim.current.buffer[-1] == '':
+        del vim.current.buffer[-1]
 
 
 def get_documentation():
