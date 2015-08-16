@@ -58,6 +58,9 @@ call pymode#default('g:pymode_quickfix_maxheight', 6)
 " Maximal height of pymode quickfix window
 call pymode#default('g:pymode_quickfix_minheight', 3)
 
+" Set default autoPEP8 aggressive level
+call pymode#default('g:pymode_autoPEP8_aggressive', 0)
+
 " LOAD VIRTUALENV {{{
 "
 " Enable virtualenv support

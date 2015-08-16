@@ -11,9 +11,9 @@ def auto():
     from .autopep8 import fix_file
 
     class Options(object):
-        aggressive = 2
+        aggressive = int(vim.eval('g:pymode_autoPEP8_aggressive'))
         diff = False
-        experimental = True
+        experimental = False
         ignore = vim.eval('g:pymode_lint_ignore')
         in_place = True
         indent_size = int(vim.eval('&tabstop'))

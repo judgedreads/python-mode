@@ -107,6 +107,8 @@ endfunction "}}}
 
 fun! pymode#buffer_pre_write() "{{{
     let b:pymode_modified = &modified
+    if g:pymode_autoPEP8_on_write
+        call pymode#lint#auto()
 endfunction
 
 fun! pymode#buffer_post_write() "{{{
